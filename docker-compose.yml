@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8
+    volumes:
+      - ~/mysql:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_DATABASE=go-saas
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=UTC
+    networks:
+      - go-saas
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+    - 3000:3000
+    environment:
+      - TZ=UTC
+      - API_MODE=debug
+      - API_PORT=3000
+      - DB_HOST=mysql
+      - DB_NAME=go-saas
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_PORT=3306
+      - ORIGINS=http://localhost:8080
+    depends_on:
+      - mysql
+    networks:
+      - go-saas
+
+networks:
+  go-saas:

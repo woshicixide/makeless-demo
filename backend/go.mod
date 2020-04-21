@@ -1,6 +1,6 @@
 module github.com/loeffel-io/go-saas-test
 
-replace github.com/loeffel-io/go-saas => /Users/lucas.loeffel/go/src/github.com/loeffel-io/go-saas
+// replace github.com/loeffel-io/go-saas => /go/src/github.com/loeffel-io/go-saas
 
 go 1.14
 

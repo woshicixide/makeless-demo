@@ -8,6 +8,7 @@ import (
 	"github.com/loeffel-io/go-saas/logger/stdio"
 	"github.com/loeffel-io/go-saas/security/basic"
 	"os"
+	"strings"
 	"sync"
 )
 
@@ -43,7 +44,7 @@ func main() {
 		Logger:   logger,
 		Security: security,
 		Database: database,
-		Origins:  []string{os.Getenv("ORIGIN")},
+		Origins:  strings.Split(os.Getenv("ORIGINS"), ","),
 		Jwt:      jwt,
 		Tls:      nil,
 		Port:     os.Getenv("API_PORT"),
