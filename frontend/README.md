@@ -1,19 +1,5 @@
 # frontend
 
-## Project setup
+```bash
+ln -s /Users/lucas.loeffel/javascript/go-saas-ui node_modules/go-saas-ui
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
