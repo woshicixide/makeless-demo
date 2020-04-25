@@ -5,7 +5,7 @@ WORKDIR /go-saas-ui
 ADD . /go-saas-ui
 
 RUN yarn install
-RUN vue build app.js
+RUN yarn build
 
 FROM httpd:2.4
 COPY --from=build /go-saas-ui/dist /usr/local/apache2/htdocs/
