@@ -15,7 +15,7 @@ import '@go-saas/go-saas-ui/src/scss/app.scss'
 const storage = new LocalStorage();
 const router = new Router();
 const http = new Axios({
-    baseURL: 'http://backend:3000',
+    baseURL: 'http://localhost:3000',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',

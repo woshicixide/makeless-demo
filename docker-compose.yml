@@ -30,7 +30,7 @@ services:
       - DB_USER=root
       - DB_PASS=root
       - DB_PORT=3306
-      - ORIGINS=http://localhost:80
+      - ORIGINS=http://localhost
     depends_on:
       - mysql
     networks:
