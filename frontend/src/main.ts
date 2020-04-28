@@ -3,6 +3,7 @@ import Saas from '@go-saas/go-saas-ui/src/saas';
 // packages
 import Router from "@go-saas/go-saas-ui/src/packages/router/basic/router";
 import Axios from "@go-saas/go-saas-ui/src/packages/http/axios/axios";
+import I18n from "@go-saas/go-saas-ui/src/packages/i18n/basic/i18n";
 import LocalStorage from "@go-saas/go-saas-ui/src/packages/storage/local-storage/local-storage";
 import Security from "@go-saas/go-saas-ui/src/packages/security/basic/security";
 
@@ -22,10 +23,14 @@ const http = new Axios({
     },
 });
 
-new Saas(
+const saas = new Saas(
     'Go SaaS',
     Master,
     router,
     http,
+    new I18n('en'),
     new Security(router, http, storage),
-).run();
+);
+
+saas.init();
+saas.run();
