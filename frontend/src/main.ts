@@ -15,22 +15,10 @@ import '@go-saas/go-saas-ui/src/scss/app.scss'
 
 const storage = new LocalStorage();
 const router = new Router();
-const http = new Axios({
-    baseURL: 'http://localhost:3000',
-    withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
+const http = new Axios({baseURL: 'http://localhost:3000'});
+const i18n = new I18n('en');
+const security = new Security(router, http, storage);
 
-const saas = new Saas(
-    'Go SaaS',
-    Master,
-    router,
-    http,
-    new I18n('en'),
-    new Security(router, http, storage),
-);
-
-saas.init();
-saas.run();
+new Saas('Go SaaS', Master, router, http, i18n, security)
+    .init()
+    .run();
