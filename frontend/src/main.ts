@@ -11,14 +11,14 @@ import Security from "@go-saas/go-saas-ui/src/packages/security/basic/security";
 import Master from "@go-saas/go-saas-ui/src/components/master/Master.vue";
 
 // scss
-import '@go-saas/go-saas-ui/src/scss/app.scss'
+import './scss/app.scss'
 
-const storage = new LocalStorage();
 const router = new Router();
 const http = new Axios({baseURL: 'http://localhost:3000'});
 const i18n = new I18n('en');
+const storage = new LocalStorage();
 const security = new Security(router, http, storage);
 
-new Saas('Go SaaS', Master, router, http, i18n, security)
+const saas = new Saas('Go SaaS', Master, router, http, i18n, security)
     .init()
     .run();
