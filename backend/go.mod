@@ -6,5 +6,5 @@ go 1.14
 
 require (
 	github.com/go-sql-driver/mysql v1.5.0
-	github.com/loeffel-io/go-saas v0.0.0-20200426160946-7df859d9b44a
+	github.com/loeffel-io/go-saas v0.0.0-20200501145347-edcdaaf58b71
 )

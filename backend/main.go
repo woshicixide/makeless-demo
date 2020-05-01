@@ -5,6 +5,7 @@ import (
 	"github.com/loeffel-io/go-saas"
 	"github.com/loeffel-io/go-saas/api"
 	"github.com/loeffel-io/go-saas/database"
+	"github.com/loeffel-io/go-saas/event/basic"
 	"github.com/loeffel-io/go-saas/logger/stdio"
 	"github.com/loeffel-io/go-saas/security/basic"
 	"os"
@@ -39,9 +40,17 @@ func main() {
 		RWMutex: new(sync.RWMutex),
 	}
 
+	// event
+	hub := new(saas_event_basic.Hub).Init()
+	event := &saas_event_basic.Event{
+		Hub:     hub,
+		RWMutex: new(sync.RWMutex),
+	}
+
 	// api
 	api := &saas_api.Api{
 		Logger:   logger,
+		Event:    event,
 		Security: security,
 		Database: database,
 		Origins:  strings.Split(os.Getenv("ORIGINS"), ","),
