@@ -5,6 +5,6 @@ replace github.com/go-saas/go-saas => /Users/lucasloffel/go/src/github.com/go-sa
 go 1.14
 
 require (
-	github.com/go-saas/go-saas v0.0.0-20200505162953-67e3d2d27f22
+	github.com/go-saas/go-saas v0.0.0-20200525160549-b46373fd077e
 	github.com/go-sql-driver/mysql v1.5.0
 )

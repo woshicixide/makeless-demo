@@ -5,12 +5,12 @@ import (
 	"strings"
 	"sync"
 
-	go_saas "github.com/go-saas/go-saas"
-	saas_api "github.com/go-saas/go-saas/api"
-	saas_database "github.com/go-saas/go-saas/database"
-	saas_event_basic "github.com/go-saas/go-saas/event/basic"
-	saas_logger_stdio "github.com/go-saas/go-saas/logger/stdio"
-	saas_security_basic "github.com/go-saas/go-saas/security/basic"
+	"github.com/go-saas/go-saas"
+	"github.com/go-saas/go-saas/api"
+	"github.com/go-saas/go-saas/database"
+	"github.com/go-saas/go-saas/event/basic"
+	"github.com/go-saas/go-saas/logger/stdio"
+	"github.com/go-saas/go-saas/security/basic"
 	_ "github.com/go-sql-driver/mysql"
 )
 
