@@ -1,16 +1,17 @@
 package main
 
 import (
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/loeffel-io/go-saas"
-	"github.com/loeffel-io/go-saas/api"
-	"github.com/loeffel-io/go-saas/database"
-	"github.com/loeffel-io/go-saas/event/basic"
-	"github.com/loeffel-io/go-saas/logger/stdio"
-	"github.com/loeffel-io/go-saas/security/basic"
 	"os"
 	"strings"
 	"sync"
+
+	go_saas "github.com/go-saas/go-saas"
+	saas_api "github.com/go-saas/go-saas/api"
+	saas_database "github.com/go-saas/go-saas/database"
+	saas_event_basic "github.com/go-saas/go-saas/event/basic"
+	saas_logger_stdio "github.com/go-saas/go-saas/logger/stdio"
+	saas_security_basic "github.com/go-saas/go-saas/security/basic"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
