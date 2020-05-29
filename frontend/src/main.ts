@@ -9,7 +9,7 @@ import Event from "@go-saas/go-saas-ui/src/packages/event/basic/event";
 import Security from "@go-saas/go-saas-ui/src/packages/security/basic/security";
 
 // components
-import Master from "@go-saas/go-saas-ui/src/components/master/Master.vue";
+import Master from "@go-saas/go-saas-ui/src/components/layouts/Master.vue";
 
 // scss
 import './scss/app.scss'

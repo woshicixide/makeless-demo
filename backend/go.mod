@@ -1,6 +1,6 @@
 module github.com/go-saas/go-saas-demo
 
-// replace github.com/go-saas/go-saas => /Users/lucasloffel/go/src/github.com/go-saas/go-saas
+replace github.com/go-saas/go-saas => /Users/lucasloffel/go/src/github.com/go-saas/go-saas
 
 go 1.14
 
