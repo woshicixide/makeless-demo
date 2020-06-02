@@ -9,9 +9,6 @@ import LocalStorage from "@go-saas/go-saas-ui/src/packages/storage/local-storage
 import Event from "@go-saas/go-saas-ui/src/packages/event/basic/event";
 import Security from "@go-saas/go-saas-ui/src/packages/security/basic/security";
 
-// components
-import Master from "@go-saas/go-saas-ui/src/components/layouts/Master.vue";
-
 // scss
 import './scss/app.scss'
 
@@ -26,6 +23,6 @@ const storage = new LocalStorage();
 const event = new Event(config.getConfiguration().getHost());
 const security = new Security(router, http, event, storage);
 
-new Saas(config, Master, router, http, i18n, event, security)
+new Saas(config, router, http, i18n, event, security)
     .init()
     .run();

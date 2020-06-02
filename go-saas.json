@@ -16,6 +16,14 @@
           "to": "dashboard"
         }
       ]
+    },
+    "right": {
+      "en": [
+        {
+          "label": "Login",
+          "to": "login"
+        }
+      ]
     }
   }
 }
