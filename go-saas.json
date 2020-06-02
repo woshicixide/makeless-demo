@@ -18,6 +18,11 @@
     "right": {
       "en": [
         {
+          "label": "GitHub",
+          "to": "https://github.com/go-saas",
+          "external": true
+        },
+        {
           "label": "Login",
           "to": "login"
         }
