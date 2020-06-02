@@ -5,7 +5,7 @@ Production ready docker example of [Go SaaS](https://github.com/go-saas) based o
 - Frontend: [go-saas-ui](https://github.com/go-saas/go-saas-ui)
 - Backend: [go-saas](https://github.com/go-saas/go-saas)
 
-## Run
+## Run: localhost
 
 ```bash
 docker-compose up -d --build
