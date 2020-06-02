@@ -1,8 +1,8 @@
 FROM node:13 as build
-RUN yarn global add @vue/cli @vue/cli-service-global
 
 WORKDIR /go-saas-ui
-ADD . /go-saas-ui
+COPY ./go-saas.json /go-saas-ui
+COPY ./frontend /go-saas-ui
 
 RUN yarn install
 RUN yarn build

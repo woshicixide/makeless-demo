@@ -13,7 +13,7 @@ import Security from "@go-saas/go-saas-ui/src/packages/security/basic/security";
 import './scss/app.scss'
 
 // config
-import configuration from './../../go-saas.json'
+const configuration = require('./../go-saas.json');
 
 const config = new Config(configuration);
 const router = new Router();
