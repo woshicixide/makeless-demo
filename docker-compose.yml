@@ -8,9 +8,8 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      - MYSQL_DATABASE=go-saas
       - MYSQL_ROOT_PASSWORD=root
-      - TZ=UTC
+      - MYSQL_DATABASE=go-saas
     networks:
       - go-saas
 
