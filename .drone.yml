@@ -6,6 +6,12 @@ steps:
   - name: test
     image: docker/compose
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - name: docker_socket
+        path: /var/run/docker.sock
     commands:
       - docker-compose up -d
+
+volumes:
+  - name: docker_socket
+    host:
+      path: /var/run/docker.sock
