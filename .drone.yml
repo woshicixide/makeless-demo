@@ -11,7 +11,7 @@ steps:
     commands:
       - sleep 5 # give docker enough time to start
       - docker ps -a
-      - apt install curl
+      - apk add curl
       - curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
       - chmod +x /usr/local/bin/docker-compose
       - docker-compose up -d
