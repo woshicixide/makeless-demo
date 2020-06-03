@@ -2,7 +2,7 @@
   "name": "Go SaaS",
   "logo": null,
   "locale": "en",
-  "host": "http://localhost:5000",
+  "host": "http://localhost:3000",
   "tokens": true,
   "teams": {
     "tokens": true
