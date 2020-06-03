@@ -3,7 +3,7 @@ type: docker
 name: docker
 
 steps:
-  - name: test
+  - name: build
     image: docker/compose
     volumes:
       - name: docker_socket
