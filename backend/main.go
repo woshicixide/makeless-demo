@@ -9,14 +9,15 @@ import (
 	"github.com/go-saas/go-saas/api"
 	"github.com/go-saas/go-saas/database"
 	"github.com/go-saas/go-saas/event/basic"
-	"github.com/go-saas/go-saas/logger/stdio"
+	"github.com/go-saas/go-saas/jwt/basic"
+	"github.com/go-saas/go-saas/logger/basic"
 	"github.com/go-saas/go-saas/security/basic"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
 	// logger
-	logger := new(saas_logger_stdio.Stdio)
+	logger := new(go_saas_basic_logger.Logger)
 
 	// database
 	database := &saas_database.Database{
@@ -30,20 +31,20 @@ func main() {
 	}
 
 	// security
-	security := &saas_security_basic.Basic{
+	security := &go_saas_basic_security.Security{
 		Database: database,
 		RWMutex:  new(sync.RWMutex),
 	}
 
 	// jwt
-	jwt := &saas_api.Jwt{
+	jwt := &go_saas_basic_jwt.Jwt{
 		Key:     os.Getenv("JWT_KEY"),
 		RWMutex: new(sync.RWMutex),
 	}
 
 	// event
-	event := &saas_event_basic.Event{
-		Hub:     new(saas_event_basic.Hub).Init(),
+	event := &go_saas_basic_event.Event{
+		Hub:     new(go_saas_basic_event.Hub).Init(),
 		RWMutex: new(sync.RWMutex),
 	}
 
@@ -53,16 +54,15 @@ func main() {
 		Event:    event,
 		Security: security,
 		Database: database,
-		Origins:  strings.Split(os.Getenv("ORIGINS"), ","),
 		Jwt:      jwt,
 		Tls:      nil,
+		Origins:  strings.Split(os.Getenv("ORIGINS"), ","),
 		Port:     os.Getenv("API_PORT"),
 		Mode:     os.Getenv("API_MODE"),
 		RWMutex:  new(sync.RWMutex),
 	}
 
 	saas := &go_saas.Saas{
-		License:  "abc",
 		Logger:   logger,
 		Database: database,
 		Api:      api,
