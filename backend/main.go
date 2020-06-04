@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-saas/go-saas"
 	"github.com/go-saas/go-saas/api"
-	"github.com/go-saas/go-saas/database"
+	"github.com/go-saas/go-saas/database/basic"
 	"github.com/go-saas/go-saas/event/basic"
 	"github.com/go-saas/go-saas/jwt/basic"
 	"github.com/go-saas/go-saas/logger/basic"
@@ -20,7 +20,7 @@ func main() {
 	logger := new(go_saas_basic_logger.Logger)
 
 	// database
-	database := &saas_database.Database{
+	database := &go_saas_basic_database.Database{
 		Dialect:  "mysql",
 		Host:     os.Getenv("DB_HOST"),
 		Database: os.Getenv("DB_NAME"),
