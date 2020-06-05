@@ -6,10 +6,12 @@ import (
 	"sync"
 
 	"github.com/gin-contrib/sse"
+	"github.com/gin-gonic/gin"
 	"github.com/go-saas/go-saas"
 	"github.com/go-saas/go-saas/authenticator/basic"
 	"github.com/go-saas/go-saas/database/basic"
 	"github.com/go-saas/go-saas/event/basic"
+	"github.com/go-saas/go-saas/http"
 	"github.com/go-saas/go-saas/http/basic"
 	"github.com/go-saas/go-saas/jwt/basic"
 	"github.com/go-saas/go-saas/logger/basic"
@@ -63,6 +65,8 @@ func main() {
 
 	// http
 	http := &go_saas_basic_http.Http{
+		Router:        gin.Default(),
+		Handlers:      make(map[string]func(http go_saas_http.Http) error),
 		Logger:        logger,
 		Event:         event,
 		Authenticator: authenticator,
@@ -81,6 +85,10 @@ func main() {
 		Database: database,
 		Http:     http,
 		RWMutex:  new(sync.RWMutex),
+	}
+
+	if err := saas.Init(); err != nil {
+		saas.GetLogger().Fatal(err)
 	}
 
 	if err := saas.Run(); err != nil {
