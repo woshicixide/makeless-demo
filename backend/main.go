@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-saas/go-saas"
 	"github.com/go-saas/go-saas/authenticator/basic"
+	"github.com/go-saas/go-saas/config/basic"
 	"github.com/go-saas/go-saas/database/basic"
 	"github.com/go-saas/go-saas/event/basic"
 	"github.com/go-saas/go-saas/http"
@@ -22,6 +23,11 @@ import (
 func main() {
 	// logger
 	logger := new(go_saas_basic_logger.Logger)
+
+	// config
+	config := &go_saas_basic_config.Config{
+		RWMutex: new(sync.RWMutex),
+	}
 
 	// database
 	database := &go_saas_basic_database.Database{
@@ -81,13 +87,14 @@ func main() {
 	}
 
 	saas := &go_saas.Saas{
+		Config:   config,
 		Logger:   logger,
 		Database: database,
 		Http:     http,
 		RWMutex:  new(sync.RWMutex),
 	}
 
-	if err := saas.Init(); err != nil {
+	if err := saas.Init("./../go-saas.json"); err != nil {
 		saas.GetLogger().Fatal(err)
 	}
 
