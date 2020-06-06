@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/gin-contrib/sse"
 	"github.com/gin-gonic/gin"
@@ -14,7 +15,6 @@ import (
 	"github.com/go-saas/go-saas/event/basic"
 	"github.com/go-saas/go-saas/http"
 	"github.com/go-saas/go-saas/http/basic"
-	"github.com/go-saas/go-saas/jwt/basic"
 	"github.com/go-saas/go-saas/logger/basic"
 	"github.com/go-saas/go-saas/security/basic"
 	_ "github.com/go-sql-driver/mysql"
@@ -46,12 +46,6 @@ func main() {
 		RWMutex:  new(sync.RWMutex),
 	}
 
-	// jwt
-	jwt := &go_saas_basic_jwt.Jwt{
-		Key:     os.Getenv("JWT_KEY"),
-		RWMutex: new(sync.RWMutex),
-	}
-
 	// event hub
 	hub := &go_saas_basic_event.Hub{
 		List:    make(map[uint]map[uint]chan sse.Event),
@@ -66,7 +60,13 @@ func main() {
 
 	// jwt authenticator
 	authenticator := &go_saas_basic_authenticator.Authenticator{
-		RWMutex: new(sync.RWMutex),
+		Security:    security,
+		Realm:       "auth",
+		Key:         os.Getenv("JWT_KEY"),
+		Timeout:     time.Hour,
+		MaxRefresh:  time.Hour,
+		IdentityKey: "id",
+		RWMutex:     new(sync.RWMutex),
 	}
 
 	// http
@@ -78,7 +78,6 @@ func main() {
 		Authenticator: authenticator,
 		Security:      security,
 		Database:      database,
-		Jwt:           jwt,
 		Tls:           nil,
 		Origins:       strings.Split(os.Getenv("ORIGINS"), ","),
 		Port:          os.Getenv("API_PORT"),
