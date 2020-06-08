@@ -80,6 +80,7 @@ func main() {
 		Database:      database,
 		Tls:           nil,
 		Origins:       strings.Split(os.Getenv("ORIGINS"), ","),
+		Headers:       []string{"Team"},
 		Port:          os.Getenv("API_PORT"),
 		Mode:          os.Getenv("API_MODE"),
 		RWMutex:       new(sync.RWMutex),
