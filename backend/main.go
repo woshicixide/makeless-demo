@@ -4,12 +4,17 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 
+	"github.com/gin-contrib/sse"
+	"github.com/gin-gonic/gin"
 	"github.com/go-saas/go-saas"
-	"github.com/go-saas/go-saas/api"
-	"github.com/go-saas/go-saas/database"
+	"github.com/go-saas/go-saas/authenticator/basic"
+	"github.com/go-saas/go-saas/config/basic"
+	"github.com/go-saas/go-saas/database/basic"
 	"github.com/go-saas/go-saas/event/basic"
-	"github.com/go-saas/go-saas/jwt/basic"
+	"github.com/go-saas/go-saas/http"
+	"github.com/go-saas/go-saas/http/basic"
 	"github.com/go-saas/go-saas/logger/basic"
 	"github.com/go-saas/go-saas/security/basic"
 	_ "github.com/go-sql-driver/mysql"
@@ -19,8 +24,13 @@ func main() {
 	// logger
 	logger := new(go_saas_basic_logger.Logger)
 
+	// config
+	config := &go_saas_basic_config.Config{
+		RWMutex: new(sync.RWMutex),
+	}
+
 	// database
-	database := &saas_database.Database{
+	database := &go_saas_basic_database.Database{
 		Dialect:  "mysql",
 		Host:     os.Getenv("DB_HOST"),
 		Database: os.Getenv("DB_NAME"),
@@ -36,37 +46,56 @@ func main() {
 		RWMutex:  new(sync.RWMutex),
 	}
 
-	// jwt
-	jwt := &go_saas_basic_jwt.Jwt{
-		Key:     os.Getenv("JWT_KEY"),
+	// event hub
+	hub := &go_saas_basic_event.Hub{
+		List:    make(map[uint]map[uint]chan sse.Event),
 		RWMutex: new(sync.RWMutex),
 	}
 
 	// event
 	event := &go_saas_basic_event.Event{
-		Hub:     new(go_saas_basic_event.Hub).Init(),
+		Hub:     hub,
 		RWMutex: new(sync.RWMutex),
 	}
 
-	// api
-	api := &saas_api.Api{
-		Logger:   logger,
-		Event:    event,
-		Security: security,
-		Database: database,
-		Jwt:      jwt,
-		Tls:      nil,
-		Origins:  strings.Split(os.Getenv("ORIGINS"), ","),
-		Port:     os.Getenv("API_PORT"),
-		Mode:     os.Getenv("API_MODE"),
-		RWMutex:  new(sync.RWMutex),
+	// jwt authenticator
+	authenticator := &go_saas_basic_authenticator.Authenticator{
+		Security:    security,
+		Realm:       "auth",
+		Key:         os.Getenv("JWT_KEY"),
+		Timeout:     time.Hour,
+		MaxRefresh:  time.Hour,
+		IdentityKey: "id",
+		RWMutex:     new(sync.RWMutex),
+	}
+
+	// http
+	http := &go_saas_basic_http.Http{
+		Router:        gin.Default(),
+		Handlers:      make(map[string]func(http go_saas_http.Http) error),
+		Logger:        logger,
+		Event:         event,
+		Authenticator: authenticator,
+		Security:      security,
+		Database:      database,
+		Tls:           nil,
+		Origins:       strings.Split(os.Getenv("ORIGINS"), ","),
+		Headers:       []string{"Team"},
+		Port:          os.Getenv("API_PORT"),
+		Mode:          os.Getenv("API_MODE"),
+		RWMutex:       new(sync.RWMutex),
 	}
 
 	saas := &go_saas.Saas{
+		Config:   config,
 		Logger:   logger,
 		Database: database,
-		Api:      api,
+		Http:     http,
 		RWMutex:  new(sync.RWMutex),
+	}
+
+	if err := saas.Init("./../go-saas.json"); err != nil {
+		saas.GetLogger().Fatal(err)
 	}
 
 	if err := saas.Run(); err != nil {
