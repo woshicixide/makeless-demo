@@ -1,4 +1,4 @@
-FROM node:13 as build
+FROM node:14 as build
 
 WORKDIR /go-saas-ui
 COPY ./go-saas.json /go-saas-ui
