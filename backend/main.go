@@ -93,9 +93,8 @@ func main() {
 		Http:     http,
 		RWMutex:  new(sync.RWMutex),
 	}
-
-	// dev: ./../go-saas.json
-	// prod: ./go-saas.json
+	
+	// prod: ./go-saas.json; dev: ./../go-saas.json
 	if err := saas.Init("./go-saas.json"); err != nil {
 		saas.GetLogger().Fatal(err)
 	}
