@@ -796,10 +796,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@go-saas/go-saas-ui@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@go-saas/go-saas-ui/-/go-saas-ui-0.8.0.tgz#22b82f022eb2b5ecb3799f8a37a2e6dc0e672a90"
-  integrity sha512-7d0HTpjJStf6mUc0jcyB2d4XFJmQK8NQbA/NcN/nzCrTDUvaaRh+4cQgnbPuQ9y5FT2LkcLQ2IEQ+RU5z757yQ==
+"@go-saas/go-saas-ui@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@go-saas/go-saas-ui/-/go-saas-ui-0.8.2.tgz#ecf11148c31b905198af5da6943d47d357ef5f66"
+  integrity sha512-Qanrif7Bga5lDxgxkuj/smRjwxfRXMBuDXQvCOTv5zHS89zHrcDMJ5/wAvBqYfrMZK0/MPG1t/u7Bav5621d2A==
   dependencies:
     "@vue/cli-plugin-babel" "~4.3.0"
     "@vue/cli-plugin-typescript" "~4.3.0"
