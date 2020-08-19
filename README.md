@@ -1,6 +1,6 @@
 # Go SaaS Demo
 
-Go SaaS Framework - Production ready docker demo - based on [Google Distroless](https://github.com/GoogleContainerTools/distroless) and [Apache](https://hub.docker.com/_/httpd)
+Go SaaS Framework - Production-Ready Docker Demo - based on [Google Distroless](https://github.com/GoogleContainerTools/distroless) and [Apache](https://hub.docker.com/_/httpd)
 
 [![Build Status](https://ci.loeffel.io/api/badges/go-saas/go-saas-demo/status.svg)](https://ci.loeffel.io/go-saas/go-saas-demo) 
 
