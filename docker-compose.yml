@@ -24,6 +24,11 @@ services:
       - TZ=UTC
       - API_MODE=debug
       - API_PORT=3000
+      - MAILER_HOST=
+      - MAILER_IDENTITY=
+      - MAILER_PORT=
+      - MAILER_USERNAME=
+      - MAILER_PASSWORD=
       - DB_HOST=mysql
       - DB_NAME=go-saas
       - DB_USER=root
