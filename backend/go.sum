@@ -54,6 +54,10 @@ github.com/go-saas/go-saas v0.0.0-20200826171220-a24abf4ea27f h1:1AcqvAVc53ihI/N
 github.com/go-saas/go-saas v0.0.0-20200826171220-a24abf4ea27f/go.mod h1:FvvKMp3CoMlCb4jSqGMLiIvczh9m7zZy/peEQFUw2V8=
 github.com/go-saas/go-saas v0.0.0-20200826171752-2b62b30a2c8b h1:Kham5Y1JuBxVep370Ko3BOXKNYdc4LGX3xgaeW2mwmA=
 github.com/go-saas/go-saas v0.0.0-20200826171752-2b62b30a2c8b/go.mod h1:FvvKMp3CoMlCb4jSqGMLiIvczh9m7zZy/peEQFUw2V8=
+github.com/go-saas/go-saas v0.0.0-20200826192902-7e89451fb6a6 h1:ydkDpEYfFOjNpnPu6rHv6Ndtlb+1i15P4ajLXBcidss=
+github.com/go-saas/go-saas v0.0.0-20200826192902-7e89451fb6a6/go.mod h1:FvvKMp3CoMlCb4jSqGMLiIvczh9m7zZy/peEQFUw2V8=
+github.com/go-saas/go-saas v0.0.0-20200826200711-ebd4a0e70757 h1:c6Q1vUON56nN8nX3Le6cawv+VYx3Jcq7VGrEQIgYVeg=
+github.com/go-saas/go-saas v0.0.0-20200826200711-ebd4a0e70757/go.mod h1:FvvKMp3CoMlCb4jSqGMLiIvczh9m7zZy/peEQFUw2V8=
 github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
 github.com/go-sql-driver/mysql v1.5.0 h1:ozyZYNQW3x3HtqT1jira07DN2PArx2v7/mN66gGcHOs=
 github.com/go-sql-driver/mysql v1.5.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=

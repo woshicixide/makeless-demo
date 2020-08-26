@@ -1,15 +1,14 @@
 module github.com/go-saas/go-saas-demo
 
-replace github.com/go-saas/go-saas => /Users/lucasloffel/go/src/github.com/go-saas/go-saas
+// replace github.com/go-saas/go-saas => /Users/lucasloffel/go/src/github.com/go-saas/go-saas
 
 go 1.15
 
 require (
 	github.com/appleboy/gin-jwt/v2 v2.6.4 // indirect
-	github.com/gin-contrib/sse v0.1.0
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-playground/validator/v10 v10.3.0 // indirect
-	github.com/go-saas/go-saas v0.0.0-20200826192902-7e89451fb6a6
+	github.com/go-saas/go-saas v0.0.0-20200826200711-ebd4a0e70757
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/jinzhu/gorm v1.9.16 // indirect
