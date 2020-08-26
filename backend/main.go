@@ -6,7 +6,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gin-contrib/sse"
 	"github.com/gin-gonic/gin"
 	"github.com/go-saas/go-saas"
 	"github.com/go-saas/go-saas/authenticator/basic"
@@ -59,7 +58,7 @@ func main() {
 
 	// event hub
 	hub := &go_saas_event_basic.Hub{
-		List:    make(map[uint]map[uint]chan sse.Event),
+		List:    new(sync.Map),
 		RWMutex: new(sync.RWMutex),
 	}
 
