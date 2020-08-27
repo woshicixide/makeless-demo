@@ -65,6 +65,7 @@ func main() {
 	// event
 	event := &go_saas_event_basic.Event{
 		Hub:     hub,
+		Error:   make(chan error),
 		RWMutex: new(sync.RWMutex),
 	}
 
