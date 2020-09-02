@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/go-saas/go-saas/mailer"
 	"os"
 	"strings"
 	"sync"
@@ -16,6 +15,7 @@ import (
 	"github.com/go-saas/go-saas/http"
 	"github.com/go-saas/go-saas/http/basic"
 	"github.com/go-saas/go-saas/logger/basic"
+	"github.com/go-saas/go-saas/mailer"
 	"github.com/go-saas/go-saas/mailer/basic"
 	"github.com/go-saas/go-saas/security/basic"
 	_ "github.com/go-sql-driver/mysql"
