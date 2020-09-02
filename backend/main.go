@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/go-saas/go-saas/mailer"
 	"os"
 	"strings"
 	"sync"
@@ -31,6 +32,7 @@ func main() {
 
 	// mailer
 	mailer := &go_saas_mailer_basic.Mailer{
+		Handlers: make(map[string]func(data map[string]interface{}) (go_saas_mailer.Mail, error)),
 		Host:     os.Getenv("MAILER_HOST"),
 		Port:     os.Getenv("MAILER_PORT"),
 		Identity: os.Getenv("MAILER_IDENTITY"),
@@ -89,6 +91,7 @@ func main() {
 		Authenticator: authenticator,
 		Security:      security,
 		Database:      database,
+		Mailer:        mailer,
 		Tls:           nil,
 		Origins:       strings.Split(os.Getenv("ORIGINS"), ","),
 		Headers:       []string{"Team"},

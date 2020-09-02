@@ -3,6 +3,7 @@
   "logo": null,
   "locale": "en",
   "host": "http://localhost:3000",
+  "mail": "info@example.com",
   "tokens": true,
   "teams": {
     "tokens": true
