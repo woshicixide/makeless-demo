@@ -8,7 +8,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@go-saas/go-saas-ui": "^0.8.6",
+    "@go-saas/go-saas-ui": "^0.8.7",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
