@@ -9,9 +9,9 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=go-saas
+      - MYSQL_DATABASE=makeless
     networks:
-      - go-saas
+      - makeless
 
   backend:
     build:
@@ -30,7 +30,7 @@ services:
       - MAILER_USERNAME=
       - MAILER_PASSWORD=
       - DB_HOST=mysql
-      - DB_NAME=go-saas
+      - DB_NAME=makeless
       - DB_USER=root
       - DB_PASS=root
       - DB_PORT=3306
@@ -38,7 +38,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - go-saas
+      - makeless
 
   frontend:
     build:
@@ -51,4 +51,4 @@ services:
       - backend
 
 networks:
-  go-saas:
+  makeless:
