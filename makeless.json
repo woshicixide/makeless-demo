@@ -3,6 +3,7 @@
   "logo": null,
   "locale": "en",
   "host": "http://localhost:3000",
+  "emailVerification": true,
   "mail": {
     "name": "Makeless",
     "logo": null,
