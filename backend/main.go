@@ -109,7 +109,7 @@ func main() {
 		RWMutex:  new(sync.RWMutex),
 	}
 
-	if err := saas.Init("./go-saas.json"); err != nil {
+	if err := saas.Init("./makeless.json"); err != nil {
 		saas.GetLogger().Fatal(err)
 	}
 
