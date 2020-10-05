@@ -3,7 +3,21 @@
   "logo": null,
   "locale": "en",
   "host": "http://localhost:3000",
-  "mail": "info@example.com",
+  "mail": {
+    "name": "Makeless",
+    "logo": null,
+    "from": "Makeless <info@makeless.io>",
+    "link": "https://localhost",
+    "buttonColor": "#4586ab",
+    "buttonTextColor": "#FFFFFF",
+    "texts": {
+      "en": {
+        "greeting": "Hello",
+        "signature": "Best Regards",
+        "copyright": "Copyright © 2020 Makeless. All rights reserved."
+      }
+    }
+  },
   "tokens": true,
   "teams": {
     "tokens": true
@@ -21,12 +35,16 @@
       "en": [
         {
           "label": "GitHub",
-          "to": "https://github.com/go-saas",
+          "to": "https://github.com/makeless",
           "external": true
         },
         {
           "label": "Login",
           "to": "login"
+        },
+        {
+          "label": "Register",
+          "to": "register"
         }
       ]
     }
