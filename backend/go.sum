@@ -123,6 +123,8 @@ github.com/makeless/makeless-go v0.0.0-20201005111428-7ff8c5427140 h1:eoshe2qhz+
 github.com/makeless/makeless-go v0.0.0-20201005111428-7ff8c5427140/go.mod h1:N6IuYQYDuqT2nXcE1IwYxMgL+g1JyB4K66WByqZzoAQ=
 github.com/makeless/makeless-go v0.0.0-20201005114136-ccedf8c95d34 h1:1iUVLO+fk2BCpcbjz0ReWP6CSaHyq7huT0s+XPn7+g4=
 github.com/makeless/makeless-go v0.0.0-20201005114136-ccedf8c95d34/go.mod h1:w4LXtBvTX6f6pjbZePQD55jns53DDinpTYGp8DT/Apk=
+github.com/makeless/makeless-go v0.0.0-20201005120357-75c03a5703d8 h1:J87t9sWMN4i1JWz5gKuw1RXpnuZxw4BPfuTiTYk4fCw=
+github.com/makeless/makeless-go v0.0.0-20201005120357-75c03a5703d8/go.mod h1:w4LXtBvTX6f6pjbZePQD55jns53DDinpTYGp8DT/Apk=
 github.com/matcornic/hermes/v2 v2.1.0 h1:9TDYFBPFv6mcXanaDmRDEp/RTWj0dTTi+LpFnnnfNWc=
 github.com/matcornic/hermes/v2 v2.1.0/go.mod h1:2+ziJeoyRfaLiATIL8VZ7f9hpzH4oDHqTmn0bhrsgVI=
 github.com/mattn/go-isatty v0.0.9/go.mod h1:YNRxwqDuOph6SZLI9vUUz6OYw3QyUt7WiY2yME+cCiQ=

@@ -1,8 +1,8 @@
-import Saas from '@go-saas/go-saas-ui/src/saas';
+import Makeless from '@makeless/makeless-ui/src/makeless';
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $saas: Saas;
+        $makeless: Makeless;
         userLoaded: boolean;
 
         onUserLoaded(): void
