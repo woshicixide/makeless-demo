@@ -1,13 +1,13 @@
 FROM golang:1.14 as build
 
-WORKDIR /go/src/go-saas
-COPY ./backend /go/src/go-saas
-COPY ./go-saas.json /go/src/go-saas
+WORKDIR /go/src/makeless
+COPY ./backend /go/src/makeless
+COPY ./makeless.json /go/src/makeless
 
-RUN go build -o /go/bin/go-saas
+RUN go build -o /go/bin/makeless
 
 FROM gcr.io/distroless/base
 
-COPY --from=build /go/bin/go-saas /
-COPY --from=build /go/src/go-saas/go-saas.json /
-CMD ["/go-saas"]
+COPY --from=build /go/bin/makeless /
+COPY --from=build /go/src/makeless/makeless.json /
+CMD ["/makeless"]

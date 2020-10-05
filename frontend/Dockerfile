@@ -1,7 +1,7 @@
 FROM node:14 as build
 
 WORKDIR /go-saas-ui
-COPY ./go-saas.json /go-saas-ui
+COPY ./makeless.json /go-saas-ui
 COPY ./frontend /go-saas-ui
 
 RUN yarn install
