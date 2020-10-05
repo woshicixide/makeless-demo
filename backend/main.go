@@ -7,32 +7,32 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-saas/go-saas"
-	"github.com/go-saas/go-saas/authenticator/basic"
-	"github.com/go-saas/go-saas/config/basic"
-	"github.com/go-saas/go-saas/database/basic"
-	"github.com/go-saas/go-saas/event/basic"
-	"github.com/go-saas/go-saas/http"
-	"github.com/go-saas/go-saas/http/basic"
-	"github.com/go-saas/go-saas/logger/basic"
-	"github.com/go-saas/go-saas/mailer"
-	"github.com/go-saas/go-saas/mailer/basic"
-	"github.com/go-saas/go-saas/security/basic"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/makeless/makeless-go"
+	"github.com/makeless/makeless-go/authenticator/basic"
+	"github.com/makeless/makeless-go/config/basic"
+	"github.com/makeless/makeless-go/database/basic"
+	"github.com/makeless/makeless-go/event/basic"
+	"github.com/makeless/makeless-go/http"
+	"github.com/makeless/makeless-go/http/basic"
+	"github.com/makeless/makeless-go/logger/basic"
+	"github.com/makeless/makeless-go/mailer"
+	"github.com/makeless/makeless-go/mailer/basic"
+	"github.com/makeless/makeless-go/security/basic"
 )
 
 func main() {
 	// logger
-	logger := new(go_saas_logger_basic.Logger)
+	logger := new(makeless_go_logger_basic.Logger)
 
 	// config
-	config := &go_saas_config_basic.Config{
+	config := &makeless_go_config_basic.Config{
 		RWMutex: new(sync.RWMutex),
 	}
 
 	// mailer
-	mailer := &go_saas_mailer_basic.Mailer{
-		Handlers: make(map[string]func(data map[string]interface{}) (go_saas_mailer.Mail, error)),
+	mailer := &makeless_go_mailer_basic.Mailer{
+		Handlers: make(map[string]func(data map[string]interface{}) (makeless_go_mailer.Mail, error)),
 		Host:     os.Getenv("MAILER_HOST"),
 		Port:     os.Getenv("MAILER_PORT"),
 		Identity: os.Getenv("MAILER_IDENTITY"),
@@ -42,7 +42,7 @@ func main() {
 	}
 
 	// database
-	database := &go_saas_database_basic.Database{
+	database := &makeless_go_database_basic.Database{
 		Dialect:  "mysql",
 		Host:     os.Getenv("DB_HOST"),
 		Database: os.Getenv("DB_NAME"),
@@ -53,26 +53,26 @@ func main() {
 	}
 
 	// security
-	security := &go_saas_security_basic.Security{
+	security := &makeless_go_security_basic.Security{
 		Database: database,
 		RWMutex:  new(sync.RWMutex),
 	}
 
 	// event hub
-	hub := &go_saas_event_basic.Hub{
+	hub := &makeless_go_event_basic.Hub{
 		List:    new(sync.Map),
 		RWMutex: new(sync.RWMutex),
 	}
 
 	// event
-	event := &go_saas_event_basic.Event{
+	event := &makeless_go_event_basic.Event{
 		Hub:     hub,
 		Error:   make(chan error),
 		RWMutex: new(sync.RWMutex),
 	}
 
 	// jwt authenticator
-	authenticator := &go_saas_authenticator_basic.Authenticator{
+	authenticator := &makeless_go_authenticator_basic.Authenticator{
 		Security:    security,
 		Realm:       "auth",
 		Key:         os.Getenv("JWT_KEY"),
@@ -83,9 +83,9 @@ func main() {
 	}
 
 	// http
-	http := &go_saas_http_basic.Http{
+	http := &makeless_go_http_basic.Http{
 		Router:        gin.Default(),
-		Handlers:      make(map[string]func(http go_saas_http.Http) error),
+		Handlers:      make(map[string]func(http makeless_go_http.Http) error),
 		Logger:        logger,
 		Event:         event,
 		Authenticator: authenticator,
@@ -100,7 +100,7 @@ func main() {
 		RWMutex:       new(sync.RWMutex),
 	}
 
-	saas := &go_saas.Saas{
+	makeless := &makeless_go.Makeless{
 		Config:   config,
 		Logger:   logger,
 		Mailer:   mailer,
@@ -109,11 +109,11 @@ func main() {
 		RWMutex:  new(sync.RWMutex),
 	}
 
-	if err := saas.Init("./makeless.json"); err != nil {
-		saas.GetLogger().Fatal(err)
+	if err := makeless.Init("./makeless.json"); err != nil {
+		makeless.GetLogger().Fatal(err)
 	}
 
-	if err := saas.Run(); err != nil {
-		saas.GetLogger().Fatal(err)
+	if err := makeless.Run(); err != nil {
+		makeless.GetLogger().Fatal(err)
 	}
 }

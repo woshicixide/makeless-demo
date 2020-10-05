@@ -1,13 +1,13 @@
-FROM golang:1.14 as build
+FROM golang:1.15 as build
 
-WORKDIR /go/src/makeless
-COPY ./backend /go/src/makeless
-COPY ./makeless.json /go/src/makeless
+WORKDIR /go/src/makeless-go
+COPY ./backend /go/src/makeless-go
+COPY ./makeless.json /go/src/makeless-go
 
-RUN go build -o /go/bin/makeless
+RUN go build -o /go/bin/makeless-go
 
 FROM gcr.io/distroless/base
 
-COPY --from=build /go/bin/makeless /
-COPY --from=build /go/src/makeless/makeless.json /
-CMD ["/makeless"]
+COPY --from=build /go/bin/makeless-go /
+COPY --from=build /go/src/makeless-go/makeless.json /
+CMD ["/makeless-go"]
