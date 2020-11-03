@@ -837,10 +837,10 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
-"@makeless/makeless-ui@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@makeless/makeless-ui/-/makeless-ui-0.9.0.tgz#96f4e724c7a801d4cf4dd432ff3d8902942ed84e"
-  integrity sha512-YH4uhso1tnJ02dkD6vzT1UeCiY5rX4DbURrwwYtPcsgzfU4Ya56drrOzB4c3gH9rMa1tbhf6kb3ZABidgMrsPg==
+"@makeless/makeless-ui@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@makeless/makeless-ui/-/makeless-ui-0.9.1.tgz#1d5520a2ec66e4f56d3f8f08c9ccb8299ddd90c5"
+  integrity sha512-U5pLpZsUaUXiwo0dpKjxKqRi2/djQ2STpybBGHCCpKdJnMMnJvlwf5QBpLqCtFuI0Sb/+5jehOLL78cq/+sigQ==
   dependencies:
     "@vue/cli-plugin-babel" "~4.3.0"
     "@vue/cli-plugin-typescript" "~4.3.0"
