@@ -9,7 +9,7 @@ require (
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/google/go-cmp v0.5.1 // indirect
 	github.com/kr/pretty v0.2.1 // indirect
-	github.com/makeless/makeless-go v0.0.0-20201103123942-edae7893dfca
+	github.com/makeless/makeless-go v0.0.0-20201103141309-e412d0bf572f
 	github.com/ugorji/go v1.1.13 // indirect
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897 // indirect
 	golang.org/x/net v0.0.0-20201031054903-ff519b6c9102 // indirect
