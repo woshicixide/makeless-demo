@@ -8,7 +8,7 @@
     "name": "Makeless",
     "logo": null,
     "from": "Makeless <info@makeless.io>",
-    "link": "https://localhost",
+    "link": "http://localhost",
     "buttonColor": "#4586ab",
     "buttonTextColor": "#FFFFFF",
     "texts": {
