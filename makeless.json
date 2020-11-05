@@ -21,7 +21,15 @@
   },
   "tokens": true,
   "teams": {
-    "tokens": true
+    "tokens": true,
+    "roles": {
+      "owner": {
+        "en": "Owner"
+      },
+      "user": {
+        "en": "User"
+      }
+    }
   },
   "navigation": {
     "left": {
