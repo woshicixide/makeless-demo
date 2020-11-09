@@ -20,17 +20,6 @@
     }
   },
   "tokens": true,
-  "teams": {
-    "tokens": true,
-    "roles": {
-      "owner": {
-        "en": "Owner"
-      },
-      "user": {
-        "en": "User"
-      }
-    }
-  },
   "navigation": {
     "left": {
       "en": [
@@ -54,6 +43,71 @@
         {
           "label": "Register",
           "to": "register"
+        }
+      ]
+    }
+  },
+  "settingsNavigation": {
+    "en": [
+      {
+        "title": "Settings",
+        "items": [
+          {
+            "label": "Profile",
+            "to": "profile"
+          },
+          {
+            "label": "Password",
+            "to": "password"
+          },
+          {
+            "label": "Teams",
+            "to": "team"
+          },
+          {
+            "label": "Team Invitations",
+            "to": "team-invitation"
+          },
+          {
+            "label": "Tokens",
+            "to": "token"
+          }
+        ]
+      }
+    ]
+  },
+  "teams": {
+    "tokens": true,
+    "roles": {
+      "owner": {
+        "en": "Owner"
+      },
+      "user": {
+        "en": "User"
+      }
+    },
+    "settingsNavigation": {
+      "en": [
+        {
+          "title": "Settings",
+          "items": [
+            {
+              "label": "Profile",
+              "to": "profile"
+            },
+            {
+              "label": "Users",
+              "to": "team-user-team"
+            },
+            {
+              "label": "Tokens",
+              "to": "token"
+            },
+            {
+              "label": "Pending invitations",
+              "to": "team-invitation"
+            }
+          ]
         }
       ]
     }
