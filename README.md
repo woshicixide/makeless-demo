@@ -9,6 +9,5 @@ SaaS Framework - Production-Ready Docker Demo - based on [Google Distroless](htt
 
 ## Run: localhost
 
-```bash
-docker-compose up -d --build
-```
+- Configure your mailer in your [docker-compose.yml](https://github.com/makeless/makeless-demo/blob/master/docker-compose.yml#L29) file 
+- Run `docker-compose up -d --build`
