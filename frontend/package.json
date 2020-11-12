@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "private": false,
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@makeless/makeless-ui": "^1.0.0-beta.2",
+    "@makeless/makeless-ui": "^1.0.0-beta.3",
     "@types/vue-markdown": "^2.2.1",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",

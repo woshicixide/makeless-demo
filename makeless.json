@@ -93,7 +93,7 @@
           "items": [
             {
               "label": "Profile",
-              "to": "profile"
+              "to": "profile-team"
             },
             {
               "label": "Users",
@@ -101,11 +101,11 @@
             },
             {
               "label": "Tokens",
-              "to": "token"
+              "to": "token-team"
             },
             {
               "label": "Pending invitations",
-              "to": "team-invitation"
+              "to": "team-invitation-team"
             }
           ]
         }
