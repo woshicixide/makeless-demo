@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/google/go-cmp v0.5.1 // indirect
 	github.com/kr/pretty v0.2.1 // indirect
-	github.com/makeless/makeless-go v1.0.0-beta.4
+	github.com/makeless/makeless-go v1.0.0-beta.5
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/ugorji/go v1.2.0 // indirect
 	golang.org/x/crypto v0.0.0-20201112155050-0c6587e931a9 // indirect
