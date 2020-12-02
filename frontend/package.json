@@ -8,7 +8,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@makeless/makeless-ui": "^1.0.0-beta.7",
+    "@makeless/makeless-ui": "^1.0.0-beta.9",
     "@types/vue-markdown": "^2.2.1",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
