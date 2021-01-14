@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"os"
 	"strings"
 	"sync"
@@ -13,9 +14,12 @@ import (
 	"github.com/makeless/makeless-go/event/basic"
 	"github.com/makeless/makeless-go/http"
 	"github.com/makeless/makeless-go/http/basic"
+	"github.com/makeless/makeless-go/logger"
 	"github.com/makeless/makeless-go/logger/basic"
 	"github.com/makeless/makeless-go/mailer"
 	"github.com/makeless/makeless-go/mailer/basic"
+	"github.com/makeless/makeless-go/queue"
+	"github.com/makeless/makeless-go/queue/basic"
 	"github.com/makeless/makeless-go/security/basic"
 	"gorm.io/driver/mysql"
 )
@@ -29,9 +33,16 @@ func main() {
 		RWMutex: new(sync.RWMutex),
 	}
 
+	// queue
+	mailQueue := &makeless_go_queue_basic.Queue{
+		Context: context.Background(),
+		RWMutex: new(sync.RWMutex),
+	}
+
 	// mailer
 	mailer := &makeless_go_mailer_basic.Mailer{
 		Handlers: make(map[string]func(data map[string]interface{}) (makeless_go_mailer.Mail, error)),
+		Queue:    mailQueue,
 		Host:     os.Getenv("MAILER_HOST"),
 		Port:     os.Getenv("MAILER_PORT"),
 		Identity: os.Getenv("MAILER_IDENTITY"),
@@ -115,6 +126,38 @@ func main() {
 	if err := makeless.Init(mysql.Open(database.GetConnectionString()), "./makeless.json"); err != nil {
 		makeless.GetLogger().Fatal(err)
 	}
+
+	// async mail
+	go func(mailer makeless_go_mailer.Mailer, logger makeless_go_logger.Logger) {
+		for {
+			select {
+			case <-mailer.GetQueue().GetContext().Done():
+				return
+			case <-time.After(1 * time.Second):
+				var err error
+				var empty bool
+				var node makeless_go_queue.Node
+
+				for {
+					if empty, err = mailer.GetQueue().Empty(); err != nil {
+						logger.Fatal(err)
+					}
+
+					if empty {
+						break
+					}
+
+					if node, err = mailer.GetQueue().Remove(); err != nil {
+						logger.Fatal(err)
+					}
+
+					if err = mailer.Send(context.Background(), node.GetData().(*makeless_go_mailer_basic.Mail)); err != nil {
+						logger.Fatal(err)
+					}
+				}
+			}
+		}
+	}(mailer, logger)
 
 	if err := makeless.Run(); err != nil {
 		makeless.GetLogger().Fatal(err)
