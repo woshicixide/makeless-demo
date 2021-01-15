@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"strings"
 	"sync"
@@ -151,7 +152,12 @@ func main() {
 						logger.Fatal(err)
 					}
 
-					if err = mailer.Send(context.Background(), node.GetData().(*makeless_go_mailer_basic.Mail)); err != nil {
+					var mail = new(makeless_go_mailer_basic.Mail)
+					if err := json.Unmarshal(node.GetData(), mail); err != nil {
+						logger.Fatal(err)
+					}
+
+					if err = mailer.Send(context.Background(), mail); err != nil {
 						logger.Fatal(err)
 					}
 				}
