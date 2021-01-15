@@ -152,7 +152,10 @@ func main() {
 						logger.Fatal(err)
 					}
 
-					var mail = new(makeless_go_mailer_basic.Mail)
+					var mail = &makeless_go_mailer_basic.Mail{
+						RWMutex: new(sync.RWMutex),
+					}
+					
 					if err := json.Unmarshal(node.GetData(), mail); err != nil {
 						logger.Fatal(err)
 					}
