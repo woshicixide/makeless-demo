@@ -1,6 +1,6 @@
 # Makeless Demo
 
-SaaS Framework - Production-Ready Docker Demo - based on [Google Distroless](https://github.com/GoogleContainerTools/distroless) and [Apache](https://hub.docker.com/_/httpd)
+SaaS Ecosystem - Production-Ready Docker Demo - based on [Google Distroless](https://github.com/GoogleContainerTools/distroless) and [Apache](https://hub.docker.com/_/httpd)
 
 [![License](https://img.shields.io/badge/license-polyform:noncommercial-blue)](https://polyformproject.org/licenses/noncommercial/1.0.0/)
 [![Build Status](https://ci.loeffel.io/api/badges/makeless/makeless-go/status.svg)](https://ci.loeffel.io/makeless/makeless-demo)
